@@ -10,40 +10,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <style>
+        /* CSS 변수를 사용한 색상 팔레트 정의 */
         :root {
-            --deep-heather: #5C4B5E;
-            --misty-grey: #BFC0C0;
-            --charcoal-bg: #282828;
-            --card-bg: #333333;
-            --pale-gold: #E0C56E;
+            --deep-heather: #5C4B5E; /* 고급스러운 짙은 보라색 */
+            --misty-grey: #BFC0C0;  /* 차분한 중간 톤 회색 */
+            --charcoal-bg: #282828;  /* 어두운 배경색 */
+            --card-bg: #333333;     /* 카드 배경색 */
+            --pale-gold: #E0C56E;   /* 은은한 포인트 금색 */
         }
+
+        /* 기본 바디 스타일: 프리텐다드 폰트와 기본 배경/글자 색상 적용 */
         body {
             font-family: 'Pretendard', sans-serif;
             background-color: var(--charcoal-bg);
             color: var(--misty-grey);
-            overflow-x: hidden;
+            overflow-x: hidden; /* 가로 스크롤 방지 */
         }
+
+        /* 제목용 폰트 스타일 */
         .font-heading {
             font-family: 'Gowun Batang', serif;
         }
+
+        /* 히어로 섹션 배경 이미지 전환 효과 */
         .hero-section {
             transition: background-image 1.5s ease-in-out;
         }
+
+        /* 증류소 카드 스타일 및 호버 효과 */
         .distillery-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             background-color: var(--card-bg);
         }
         .distillery-card:hover {
-            transform: translateY(-12px);
+            transform: translateY(-12px); /* 위로 살짝 떠오르는 효과 */
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
+
+        /* 카드 내 슬로건 텍스트 그림자 효과 */
         .card-slogan {
             text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
         }
+
+        /* 모달 오버레이 스타일 (배경 어둡게 및 블러 처리) */
         .modal-overlay {
             background-color: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
         }
+
+        /* 모달 내용 스크롤바 스타일 */
         .modal-content::-webkit-scrollbar {
             width: 8px;
         }
@@ -54,6 +69,8 @@
             background-color: var(--deep-heather);
             border-radius: 20px;
         }
+
+        /* 탭 버튼 스타일 및 활성화 효과 */
         .tab-button {
             transition: all 0.3s ease;
             border-bottom: 3px solid transparent;
@@ -62,12 +79,16 @@
             color: var(--pale-gold);
             border-bottom-color: var(--pale-gold);
         }
+
+        /* 탭 내용 표시/숨김 처리 */
         .tab-content {
             display: none;
         }
         .tab-content.active {
             display: block;
         }
+
+        /* 모달 내 리스트 아이템 스타일 */
         .prose-custom ul > li {
             padding-left: 1.5em;
             position: relative;
@@ -82,6 +103,8 @@
             left: 0;
             border-radius: 50%;
         }
+
+        /* 확대 가능한 이미지 스타일 및 호버 효과 */
         .enlargeable-img {
             transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
             cursor: pointer;
@@ -95,7 +118,7 @@
 </head>
 <body>
 
-    <!-- Hero Section -->
+    <!-- 히어로 섹션 -->
     <header id="hero-section" class="hero-section h-screen min-h-[700px] bg-cover bg-center flex items-center justify-center relative">
         <div class="absolute inset-0 bg-black/60"></div>
         <div class="text-center z-10 p-4">
@@ -104,11 +127,11 @@
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- 메인 콘텐츠 -->
     <main class="py-16 md:py-24 px-4">
         <div class="max-w-7xl mx-auto">
             
-            <!-- Introduction Quote Section -->
+            <!-- 소개 문구 섹션 -->
             <section class="mb-20 md:mb-24">
                 <div class="max-w-4xl mx-auto px-4 text-center">
                     <blockquote class="font-heading text-2xl md:text-3xl leading-relaxed md:leading-loose text-gray-300">
@@ -117,7 +140,7 @@
                 </div>
             </section>
             
-            <!-- Photo Gallery Section -->
+            <!-- 사진 갤러리 섹션 -->
             <section class="mb-20 md:mb-32">
                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="grid gap-4">
@@ -135,7 +158,7 @@
                 </div>
             </section>
 
-            <!-- Map Section -->
+            <!-- 지도 섹션 -->
             <section class="mb-20 md:mb-32">
                 <h2 class="font-heading text-4xl md:text-5xl text-center font-bold mb-8 text-white">아일라 지도</h2>
                 <div class="max-w-5xl mx-auto bg-[var(--card-bg)] p-4 rounded-lg shadow-2xl">
@@ -143,17 +166,17 @@
                 </div>
             </section>
             
-            <!-- Distillery Cards Section -->
+            <!-- 증류소 카드 섹션 -->
             <section>
                 <h2 class="font-heading text-4xl md:text-5xl text-center font-bold mb-12 text-white">아일라의 증류소</h2>
                 <div id="card-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Cards will be injected here by script -->
+                    <!-- 자바스크립트에 의해 카드들이 동적으로 생성됩니다. -->
                 </div>
             </section>
         </div>
     </main>
 
-    <!-- Distillery Modal -->
+    <!-- 증류소 상세 정보 모달 -->
     <div id="modal" class="fixed inset-0 z-50 modal-overlay items-center justify-center hidden p-4">
         <div class="relative bg-[var(--card-bg)] w-full max-w-4xl max-h-[95vh] rounded-lg shadow-2xl flex flex-col overflow-hidden">
             <div class="modal-content overflow-y-auto">
@@ -184,7 +207,7 @@
         </div>
     </div>
     
-    <!-- Image Lightbox Modal -->
+    <!-- 이미지 확대 라이트박스 모달 -->
     <div id="image-lightbox" class="fixed inset-0 z-[100] modal-overlay items-center justify-center hidden p-4">
         <div class="relative w-full h-full flex items-center justify-center">
             <img id="lightbox-image" src="" alt="Enlarged image" class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg">
@@ -194,14 +217,14 @@
         </button>
     </div>
     
-    <!-- Footer -->
+    <!-- 푸터 -->
     <footer class="bg-black/90 py-8 text-center text-gray-500">
         <p>&copy; 2024 Islay Whisky Tour. All Rights Reserved.</p>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Data for distilleries
+            // 증류소 데이터 배열
             const locations = [
                 {
                     id: 'kilchoman', name: '킬호만', slogan: "100% 아일라에 대한 집착 - 물, 보리, 피트, 사람까지 모든 것을 아일라에서", logo: 'https://www.kilchomandistillery.com/wp-content/uploads/2018/04/logo.svg', cardImage: 'https://i.imgur.com/tdhAOAu.jpeg',
@@ -271,7 +294,7 @@
                 }
             ];
             
-            // Get elements from DOM
+            // DOM 요소 가져오기
             const cardContainer = document.getElementById('card-container');
             const modal = document.getElementById('modal');
             const closeModalBtn = document.getElementById('close-modal');
@@ -287,7 +310,7 @@
             const lightboxImage = document.getElementById('lightbox-image');
             const closeLightboxBtn = document.getElementById('close-lightbox');
             
-            // Hero Section Slideshow
+            // 히어로 섹션 배경 이미지 슬라이드쇼
             const hero = document.getElementById('hero-section');
             const heroImages = ['https://i.imgur.com/fSRVkJs.jpeg', 'https://i.imgur.com/zzPPxIy.jpeg', 'https://i.imgur.com/Z6Vgid3.jpeg', 'https://images.unsplash.com/photo-1566584288393-2c1a44a16398?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'];
             let currentImageIndex = 0;
@@ -298,7 +321,7 @@
             setInterval(changeHeroImage, 5000);
             hero.style.backgroundImage = `url('${heroImages[0]}')`;
 
-            // Function to create distillery cards
+            // 증류소 카드 생성 함수
             function createCards() {
                 locations.forEach(location => {
                     const card = document.createElement('div');
@@ -320,10 +343,10 @@
                 });
             }
 
-            // Tab data for the modal
+            // 모달 탭 정보
             const tabInfo = [{ id: 'features', title: '핵심 특징' }, { id: 'history', title: '양조장 역사' }, { id: 'whiskies', title: '대표 위스키' }, { id: 'tastingNotes', title: '맛과 향' }];
 
-            // Function to open and populate the modal
+            // 모달 열기 및 데이터 채우기 함수
             function openModal(id) {
                 const location = locations.find(loc => loc.id === id);
                 if (location) {
@@ -368,7 +391,7 @@
                     tabButtonsContainer.querySelector('.tab-button').classList.add('active');
                     modalBody.querySelector('.tab-content').classList.add('active');
                     
-                    // Set official website link visibility and href
+                    // 공식 홈페이지 링크 설정
                     if (location.link === '#') {
                         modalLink.style.display = 'none';
                     } else {
@@ -376,7 +399,7 @@
                         modalLink.href = location.link;
                     }
 
-                    // Set Instagram link visibility and href
+                    // 인스타그램 링크 설정
                     if (location.instagram) {
                         modalInstagramLink.style.display = 'inline-block';
                         modalInstagramLink.href = location.instagram;
@@ -386,11 +409,11 @@
                     
                     modal.classList.remove('hidden');
                     modal.classList.add('flex');
-                    document.body.style.overflow = 'hidden';
+                    document.body.style.overflow = 'hidden'; // 스크롤 방지
                 }
             }
             
-            // Event listener for modal tabs
+            // 모달 탭 버튼 클릭 이벤트 리스너
             tabButtonsContainer.addEventListener('click', (e) => {
                 if(e.target.matches('.tab-button')) {
                     const tabId = e.target.dataset.tab;
@@ -401,27 +424,28 @@
                 }
             });
 
-            // Function to close the modal
+            // 모달 닫기 함수
             function closeModal() {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
-                document.body.style.overflow = 'auto';
+                document.body.style.overflow = 'auto'; // 스크롤 복원
             }
 
-            // Lightbox functionality
+            // 라이트박스 열기 함수
             function openLightbox(src) {
                 lightboxImage.src = src;
                 imageLightbox.classList.remove('hidden');
                 imageLightbox.classList.add('flex');
             }
 
+            // 라이트박스 닫기 함수
             function closeLightbox() {
                 imageLightbox.classList.add('hidden');
                 imageLightbox.classList.remove('flex');
                 lightboxImage.src = '';
             }
 
-            // General click listener for cards and enlargeable images
+            // 전역 클릭 이벤트 리스너 (카드, 확대 가능 이미지)
             document.addEventListener('click', (e) => {
                 if (e.target.matches('.enlargeable-img')) {
                     const src = e.target.dataset.src || e.target.src || e.target.style.backgroundImage.slice(5, -2);
@@ -433,7 +457,7 @@
                 }
             });
 
-            // Event listeners for closing modals
+            // 모달 및 라이트박스 닫기 이벤트 리스너
             closeModalBtn.addEventListener('click', closeModal);
             modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
@@ -442,7 +466,7 @@
             imageLightbox.addEventListener('click', (e) => { if (e.target === imageLightbox) closeLightbox(); });
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !imageLightbox.classList.contains('hidden')) closeLightbox(); });
 
-            // Initial calls to populate the page
+            // 페이지 로드 시 카드 생성
             createCards();
         });
     </script>
